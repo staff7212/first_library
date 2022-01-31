@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  width: 90px;
+  height: 30px;
+  background-color: lightblue;
+  text-align: center;
+}
+
+.active {
+  font-size: 20px;
+  color: red;
+}

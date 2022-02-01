@@ -50,13 +50,13 @@ function sayHello() {
 // $('button').fadeOut(2000);
 
 $('#first').click(() => {
-    $('div .w-500').eq(0).fadeOut(1000);
+    $('div .w-500').eq(0).fadeToggle(1000);
 });
 
 $('[data-count="second"]').click(() => {
-    $('div .w-500').eq(1).fadeOut(1000);
+    $('div .w-500').eq(1).fadeToggle(1000);
 });
 
 $('button').eq(2).click(() => {
-    $('div .w-500').fadeOut(1000);
+    $('div .w-500').fadeToggle(1000);
 });

@@ -54,3 +54,41 @@ $.prototype.fadeOut = function(duration, fin) {
     }
     return this;
 };
+
+//ниже представленн этот метод без повторение кода
+// $.prototype.fadeToggle = function(duration, display, fin) {
+//     for (let i = 0; i < this.length; i++) {
+//         if (window.getComputedStyle(this[i]).display === 'none') {
+//             this[i].style.display = display || 'block';
+        
+//             const _fadeIn = (complection) => {
+//                 this[i].style.opacity = complection;
+//             };
+
+//             const anim = this.animateOverTime(duration, _fadeIn, fin);
+//             requestAnimationFrame(anim);  
+//         } else {
+//             const _fadeOut = (complection) => {
+//                 this[i].style.opacity = 1 - complection;
+//                 if (complection === 1) {
+//                     this[i].style.display = 'none';
+//                 }
+//             };
+    
+//             const anim = this.animateOverTime(duration, _fadeOut, fin);
+//             requestAnimationFrame(anim);   
+//         }  
+//     }
+//     return this;
+// };
+
+$.prototype.fadeToggle = function(duration, display, fin) {
+    for (let i = 0; i < this.length; i++) {
+        if (window.getComputedStyle(this[i]).display == 'none') {
+            $(this[i]).fadeIn(duration, display, fin);
+        } else {
+            $(this[i]).fadeOut(duration, fin);
+        }
+    }
+    return this;
+};

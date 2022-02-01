@@ -576,6 +576,41 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.fadeOut = function (dura
   }
 
   return this;
+}; //ниже представленн этот метод без повторение кода
+// $.prototype.fadeToggle = function(duration, display, fin) {
+//     for (let i = 0; i < this.length; i++) {
+//         if (window.getComputedStyle(this[i]).display === 'none') {
+//             this[i].style.display = display || 'block';
+//             const _fadeIn = (complection) => {
+//                 this[i].style.opacity = complection;
+//             };
+//             const anim = this.animateOverTime(duration, _fadeIn, fin);
+//             requestAnimationFrame(anim);  
+//         } else {
+//             const _fadeOut = (complection) => {
+//                 this[i].style.opacity = 1 - complection;
+//                 if (complection === 1) {
+//                     this[i].style.display = 'none';
+//                 }
+//             };
+//             const anim = this.animateOverTime(duration, _fadeOut, fin);
+//             requestAnimationFrame(anim);   
+//         }  
+//     }
+//     return this;
+// };
+
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.fadeToggle = function (duration, display, fin) {
+  for (let i = 0; i < this.length; i++) {
+    if (window.getComputedStyle(this[i]).display == 'none') {
+      Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).fadeIn(duration, display, fin);
+    } else {
+      Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).fadeOut(duration, fin);
+    }
+  }
+
+  return this;
 };
 
 /***/ }),
@@ -681,13 +716,13 @@ function sayHello() {
 
 
 $('#first').click(() => {
-  $('div .w-500').eq(0).fadeOut(1000);
+  $('div .w-500').eq(0).fadeToggle(1000);
 });
 $('[data-count="second"]').click(() => {
-  $('div .w-500').eq(1).fadeOut(1000);
+  $('div .w-500').eq(1).fadeToggle(1000);
 });
 $('button').eq(2).click(() => {
-  $('div .w-500').fadeOut(1000);
+  $('div .w-500').fadeToggle(1000);
 });
 
 /***/ })

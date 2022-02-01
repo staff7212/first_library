@@ -1,17 +1,312 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap");
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-button {
-  width: 90px;
-  height: 30px;
-  background-color: lightblue;
+.container {
+  max-width: 1140px;
+  padding: 0px 15px;
+  margin: 0px auto;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #c675f5;
+  background-color: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #343a40;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: all 0.2s;
+}
+.btn:hover {
+  background-color: #daa5f8;
+  color: #fff;
+}
+.btn-primary {
+  background-color: #c675f5;
+  border-color: #c675f5;
+  color: #fff;
+}
+.btn-primary:hover {
+  background-color: #b245f2;
+}
+.btn-success {
+  background-color: #2ea54c;
+  border-color: #2ea54c;
+  color: #fff;
+}
+.btn-success:hover {
+  background-color: #237d3a;
+}
+.btn-danger {
+  background-color: #f33144;
+  border-color: #f33144;
+  color: #fff;
+}
+.btn-danger:hover {
+  background-color: #e40d22;
+}
+.btn-warning {
+  background-color: #ffd231;
+  border-color: #ffd231;
+  color: #fff;
+}
+.btn-warning:hover {
+  background-color: #fdc600;
+}
+.btn-dark {
+  background-color: #343a40;
+  border-color: #343a40;
+  color: #fff;
+}
+.btn-dark:hover {
+  background-color: #1d2124;
+}
+.btn-outline-primary {
+  border-color: #c675f5;
+  color: #c675f5;
+}
+.btn-outline-primary:hover {
+  background-color: #c675f5;
+}
+.btn-outline-success {
+  border-color: #2ea54c;
+  color: #2ea54c;
+}
+.btn-outline-success:hover {
+  background-color: #2ea54c;
+}
+.btn-outline-danger {
+  border-color: #f33144;
+  color: #f33144;
+}
+.btn-outline-danger:hover {
+  background-color: #f33144;
+}
+.btn-outline-warning {
+  border-color: #ffd231;
+  color: #ffd231;
+}
+.btn-outline-warning:hover {
+  background-color: #ffd231;
+}
+.btn-outline-dark {
+  border-color: #343a40;
+  color: #343a40;
+}
+.btn-outline-dark:hover {
+  background-color: #343a40;
+}
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.text-center {
   text-align: center;
 }
 
-.active {
+.block-center {
+  margin: 0 auto;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.f-centered {
+  justify-content: center;
+  align-items: center;
+}
+
+.f-space-around {
+  justify-content: space-around;
+}
+
+.f-space-between {
+  justify-content: space-between;
+}
+
+.fz-16 {
+  font-size: 16px;
+}
+
+.fz-20 {
   font-size: 20px;
-  color: red;
+}
+
+.fz-24 {
+  font-size: 24px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.thin {
+  font-weight: 300;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.text-color-primary {
+  color: #c675f5;
+}
+
+.text-color-success {
+  color: #2ea54c;
+}
+
+.text-color-danger {
+  color: #f33144;
+}
+
+.text-color-warning {
+  color: #ffd231;
+}
+
+.text-color-dark {
+  color: #343a40;
+}
+
+.m10 {
+  margin: 10px;
+}
+
+.m20 {
+  margin: 20px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.ml-20 {
+  margin-left: 20px;
+}
+
+.p10 {
+  padding: 10px;
+}
+
+.p20 {
+  padding: 20px;
+}
+
+.pt-10 {
+  padding-top: 10px;
+}
+
+.pr-10 {
+  padding-right: 10px;
+}
+
+.pb-10 {
+  padding-bottom: 10px;
+}
+
+.pl-10 {
+  padding-left: 10px;
+}
+
+.pt-20 {
+  padding-top: 20px;
+}
+
+.pr-20 {
+  padding-right: 20px;
+}
+
+.pb-20 {
+  padding-bottom: 20px;
+}
+
+.pl-20 {
+  padding-left: 20px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.w-300 {
+  width: 300px;
+}
+
+.w-500 {
+  width: 500px;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.h-50 {
+  height: 50%;
+}
+
+.h-300 {
+  height: 300px;
+}
+
+.h-500 {
+  height: 500px;
 }

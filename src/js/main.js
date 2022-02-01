@@ -1,6 +1,7 @@
 import './lib/lib';
 
-$('.active');
+//$
+//$('.active');
 
 //handlers
 // $('.two').on('click', sayHello);
@@ -40,6 +41,22 @@ function sayHello() {
 //closest
 //console.log($('.some').closest('.thee'));
 
-console.log($('.moree').sibling());
-console.log($('.three').siblings());
+//sibling
+// console.log($('.moree').sibling());
+// console.log($('.three').siblings());
 
+//effects
+// $('button').fadeIn(2000);
+// $('button').fadeOut(2000);
+
+$('#first').click(() => {
+    $('div .w-500').eq(0).fadeOut(1000);
+});
+
+$('[data-count="second"]').click(() => {
+    $('div .w-500').eq(1).fadeOut(1000);
+});
+
+$('button').eq(2).click(() => {
+    $('div .w-500').fadeOut(1000);
+});

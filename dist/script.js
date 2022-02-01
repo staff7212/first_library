@@ -136,6 +136,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_handlers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/handlers */ "./src/js/lib/modules/handlers.js");
 /* harmony import */ var _modules_attribute__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/attribute */ "./src/js/lib/modules/attribute.js");
 /* harmony import */ var _modules_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/actions */ "./src/js/lib/modules/actions.js");
+/* harmony import */ var _modules_effects__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/effects */ "./src/js/lib/modules/effects.js");
+
 
 
 
@@ -156,7 +158,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
-
+ //получение и изменение структуры html
 
 _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.html = function (content) {
   for (let i = 0; i < this.length; i++) {
@@ -240,7 +242,8 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.findOneEl = function (se
   Object.assign(this, newObj);
   this.length = newObj.length;
   return this;
-};
+}; //получени ближ родительского эл или самого эл по селектору
+
 
 _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.closest = function (selector) {
   let counter = 0;
@@ -506,6 +509,77 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.toggle = function () {
 
 /***/ }),
 
+/***/ "./src/js/lib/modules/effects.js":
+/*!***************************************!*\
+  !*** ./src/js/lib/modules/effects.js ***!
+  \***************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
+
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.animateOverTime = function (duration, callback, fin) {
+  let timeStart;
+
+  function _animateOverTime(time) {
+    if (!timeStart) {
+      timeStart = time;
+    }
+
+    let timeElapsed = time - timeStart; //время анимации
+
+    let complection = Math.min(timeElapsed / duration, 1);
+    callback(complection);
+
+    if (timeElapsed < duration) {
+      requestAnimationFrame(_animateOverTime);
+    } else {
+      if (typeof fin === 'function') {
+        fin();
+      }
+    }
+  }
+
+  return _animateOverTime;
+};
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.fadeIn = function (duration, display, fin) {
+  for (let i = 0; i < this.length; i++) {
+    this[i].style.display = display || 'block';
+
+    const _fadeIn = complection => {
+      this[i].style.opacity = complection;
+    };
+
+    const anim = this.animateOverTime(duration, _fadeIn, fin);
+    requestAnimationFrame(anim);
+  }
+
+  return this;
+};
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.fadeOut = function (duration, fin) {
+  for (let i = 0; i < this.length; i++) {
+    const _fadeOut = complection => {
+      this[i].style.opacity = 1 - complection;
+
+      if (complection === 1) {
+        this[i].style.display = 'none';
+      }
+    };
+
+    const anim = this.animateOverTime(duration, _fadeOut, fin);
+    requestAnimationFrame(anim);
+  }
+
+  return this;
+};
+
+/***/ }),
+
 /***/ "./src/js/lib/modules/handlers.js":
 /*!****************************************!*\
   !*** ./src/js/lib/modules/handlers.js ***!
@@ -566,8 +640,9 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.click = function (handle
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_lib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/lib */ "./src/js/lib/lib.js");
-
-$('.active'); //handlers
+ //$
+//$('.active');
+//handlers
 // $('.two').on('click', sayHello);
 // $('.two').off('click', sayHello);
 // $('.two').click(sayHello);
@@ -597,10 +672,23 @@ function sayHello() {
 // console.log($('.three').find('.more'));
 //closest
 //console.log($('.some').closest('.thee'));
+//sibling
+// console.log($('.moree').sibling());
+// console.log($('.three').siblings());
+//effects
+// $('button').fadeIn(2000);
+// $('button').fadeOut(2000);
 
 
-console.log($('.moree').sibling());
-console.log($('.three').siblings());
+$('#first').click(() => {
+  $('div .w-500').eq(0).fadeOut(1000);
+});
+$('[data-count="second"]').click(() => {
+  $('div .w-500').eq(1).fadeOut(1000);
+});
+$('button').eq(2).click(() => {
+  $('div .w-500').fadeOut(1000);
+});
 
 /***/ })
 

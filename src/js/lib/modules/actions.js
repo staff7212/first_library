@@ -1,5 +1,6 @@
 import $ from '../core';
 
+//получение и изменение структуры html
 $.prototype.html = function(content) {
     for (let i = 0; i < this.length; i++) {
         
@@ -85,6 +86,7 @@ $.prototype.findOneEl = function(selector) {
     return this;
 };
 
+//получени ближ родительского эл или самого эл по селектору
 $.prototype.closest = function(selector) {
     let counter = 0;
 

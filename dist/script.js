@@ -242,6 +242,72 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.findOneEl = function (se
   return this;
 };
 
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.closest = function (selector) {
+  let counter = 0;
+
+  for (let i = 0; i < this.length; i++) {
+    if (!this[i].closest(selector)) {
+      return;
+    }
+
+    this[i] = this[i].closest(selector);
+    counter++;
+  }
+
+  const objLength = Object.keys(this).length;
+
+  for (; counter < objLength; counter++) {
+    delete this[counter];
+  }
+
+  return this;
+}; //получение всех соседий, кроме самого элемента
+
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.sibling = function () {
+  const newObj = [...this[0].parentNode.children].filter(item => item !== this[0]);
+  const objLength = Object.keys(this).length;
+
+  for (let i = 0; i < objLength; i++) {
+    delete this[i];
+  }
+
+  Object.assign(this, newObj);
+  this.length = newObj.length;
+  return this;
+}; //получение всех соседий, кроме самого элемента
+
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.siblings = function () {
+  let numberOfItems = 0;
+  let counter = 0;
+  const copyObj = Object.assign({}, this);
+
+  for (let i = 0; i < copyObj.length; i++) {
+    const arr = copyObj[i].parentNode.children;
+
+    for (let j = 0; j < arr.length; j++) {
+      if (copyObj[i] === arr[j]) {
+        continue;
+      }
+
+      this[counter] = arr[j];
+      counter++;
+    }
+
+    numberOfItems += arr.length - 1;
+  }
+
+  this.length = numberOfItems;
+  const objLength = Object.keys(this).length;
+
+  for (; numberOfItems < objLength; numberOfItems++) {
+    delete this[numberOfItems];
+  }
+
+  return this;
+};
+
 /***/ }),
 
 /***/ "./src/js/lib/modules/attribute.js":
@@ -513,21 +579,28 @@ $('.active'); //handlers
 function sayHello() {
   console.log('Hello');
 } //attr
+// $('.one').setAttr('data-www', 'qaz');
+//console.log($('.one').getAllAttr());
+// $('.one').removeAllAttr();
+//html
+// console.log($('button').html());
+// $('button').html('нажми');
+//eq
+// $('button').on('click', function() {
+//     $('div').eq(2).toggleClass('active');
+// });
+// index
+// $('div').click(function() {
+//     console.log($(this).index());
+// });
+//find
+// console.log($('.three').find('.more'));
+//closest
+//console.log($('.some').closest('.thee'));
 
 
-$('.one').setAttr('data-www', 'qaz'); //console.log($('.one').getAllAttr());
-
-$('.one').removeAllAttr(); //html
-
-console.log($('button').html());
-$('button').html('нажми');
-$('button').on('click', function () {
-  $('div').eq(2).toggleClass('active');
-});
-$('div').click(function () {
-  console.log($(this).index());
-});
-console.log($('.three').find('.more'));
+console.log($('.moree').sibling());
+console.log($('.three').siblings());
 
 /***/ })
 

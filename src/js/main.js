@@ -16,23 +16,30 @@ function sayHello() {
 }
 
 //attr
-$('.one').setAttr('data-www', 'qaz');
+// $('.one').setAttr('data-www', 'qaz');
 //console.log($('.one').getAllAttr());
-$('.one').removeAllAttr();
+// $('.one').removeAllAttr();
 
 //html
-console.log($('button').html());
-$('button').html('нажми');
+// console.log($('button').html());
+// $('button').html('нажми');
 
-$('button').on('click', function() {
-    $('div').eq(2).toggleClass('active');
-});
+//eq
+// $('button').on('click', function() {
+//     $('div').eq(2).toggleClass('active');
+// });
 
-$('div').click(function() {
-    console.log($(this).index());
-});
+// index
+// $('div').click(function() {
+//     console.log($(this).index());
+// });
 
-console.log($('.three').find('.more'));
+//find
+// console.log($('.three').find('.more'));
 
+//closest
+//console.log($('.some').closest('.thee'));
 
+console.log($('.moree').sibling());
+console.log($('.three').siblings());
 

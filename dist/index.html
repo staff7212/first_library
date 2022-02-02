@@ -9,7 +9,10 @@
 </head>
 <body>
     <div class="container">
-        <div class="one" id="one" data-one='123'>1</div>
+
+        <!-- Test content -->
+
+        <!-- <div class="one" id="one" data-one='123'>1</div>
         <div class='two'>2</div>
         <div class='three'>
             <div class="some">sss</div>
@@ -17,7 +20,7 @@
             <div class="moree">mmm</div>
             <div class="some">sss</div>
             <div class="more">mmm</div>
-        </div>
+        </div> -->
 
         <button class="btn btn-primary m20" id="first">Fade out first text</button>
         <button class="btn btn-dark m20" data-count='second'>Fade out second text</button>
@@ -26,18 +29,104 @@
         <div class="w-500 block-center mt-20">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae quia ipsa voluptate ex, doloremque nostrum sit labore numquam mollitia quos! 
             Incidunt dolorem suscipit accusamus vitae est id magnam provident consequatur pariatur eius numquam quas, esse amet. 
-            Sunt voluptatibus deserunt id a quasi perferendis error porro, optio saepe quisquam amet dolor omnis facere, fugit magni, ipsa officiis. 
-            Similique laudantium quisquam ad voluptate voluptas aliquid, quidem eligendi dolores nulla incidunt nemo est voluptatem deleniti, reprehenderit rerum modi. 
-            Quibusdam, quasi dolorum consequatur ipsam esse totam excepturi accusamus inventore, ducimus, quia distinctio sit deserunt repellat optio.
         </div>
         <div class="w-500 block-center mt-20">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae quia ipsa voluptate ex, doloremque nostrum sit labore numquam mollitia quos! 
-            Incidunt dolorem suscipit accusamus vitae est id magnam provident consequatur pariatur eius numquam quas, esse amet. 
-            Sunt voluptatibus deserunt id a quasi perferendis error porro, optio saepe quisquam amet dolor omnis facere, fugit magni, ipsa officiis. 
-            Similique laudantium quisquam ad voluptate voluptas aliquid, quidem eligendi dolores nulla incidunt nemo est voluptatem deleniti, reprehenderit rerum modi. 
-            Quibusdam, quasi dolorum consequatur ipsam esse totam excepturi accusamus inventore, ducimus, quia distinctio sit deserunt repellat optio.
+            Incidunt dolorem suscipit accusamus vitae est id magnam provident consequatur pariatur eius numquam quas, esse amet.  
+        </div>
+        
+        
+        <!-- Dropdown menu -->
+        
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" id='dropdownMenuButton'>Dropdown button</button>
+            <div class="dropdown-menu" data-toggle-id="dropdownMenuButton">
+                <a href="#" class="dropdown-item">Action #1</a>
+                <a href="#" class="dropdown-item">Action #2</a>
+                <a href="#" class="dropdown-item">Action #3</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" id='dropdownMenuButton'>Dropdown button</button>
+            <div class="dropdown-menu" data-toggle-id="dropdownMenuButton">
+                <a href="#" class="dropdown-item">Action #1</a>
+                <a href="#" class="dropdown-item">Action #2</a>
+                <a href="#" class="dropdown-item">Action #3</a>
+            </div>
+        </div>
+        
+        <!-- для динамического создания меню
+        но даже этот div можно создать динамически -->
+        <div class="wrap">
+        </div>
+        
+        
+        <!-- Card -->
+        
+        <div class="goods d-flex f-space-around">
+            <div class="card">
+                <img class='card-img' src="https://images.pexels.com/photos/556666/pexels-photo-556666.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt='photo'>
+                <div class="card-body">
+                    <div class="card-title"> Card title #1</div>
+                    <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                    <a href="#" class="btn btn-primary" data-toggle='modal' data-target="#exampleModal">Link to</a>
+                </div>          
+            </div>  
+            <div class="card">
+                <img class='card-img' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT7NbeHw9Qk8Q22qbRBaHHM2x99RrNk_JB0aZ1oErZ4Dgkt5zc1boV0h1hVEuc68TX6g0&usqp=CAU" alt='photo'>
+                <div class="card-body">
+                    <div class="card-title">Card title #2</div>
+                    <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                    <a href="#" class="btn btn-primary" data-toggle='modal' data-target="#exampleModalTwo">Link to</a>
+                </div>          
+            </div>  
         </div>
 
+
+        <!-- Modal -->
+
+        <div class="modal" id='exampleModal'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button class="close" data-close>
+                        <span>&times;</span>
+                    </button>
+                    <div class="modal-header">
+                        <div class="modal-title">
+                            Modal title #1
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem nihil a velit esse iste repellendus accusantium quo numquam maiores accusamus praesentium quas non, ipsa ab dignissimos harum odit! Fuga, adipisci.
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" data-close>Close</button>
+                        <button class="btn btn-success">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id='exampleModalTwo'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button class="close" data-close>
+                        <span>&times;</span>
+                    </button>
+                    <div class="modal-header">
+                        <div class="modal-title">
+                            Modal title #2
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem nihil a velit esse iste repellendus accusantium quo numquam maiores accusamus praesentium quas non, ipsa ab dignissimos harum odit! Fuga, adipisci.
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" data-close>Close</button>
+                        <button class="btn btn-success">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src='script.js'></script>
 </body>

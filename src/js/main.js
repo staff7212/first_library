@@ -60,3 +60,19 @@ $('[data-count="second"]').click(() => {
 $('button').eq(2).click(() => {
     $('div .w-500').fadeToggle(1000);
 });
+
+//динамическое создание dropdown menu
+$('.wrap').html(
+    `
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" id='dropdownMenu'>Dropdown button</button>
+        <div class="dropdown-menu" data-toggle-id="dropdownMenu">
+            <a href="#" class="dropdown-item">Action #1</a>
+            <a href="#" class="dropdown-item">Action #2</a>
+            <a href="#" class="dropdown-item">Action #3</a>
+        </div>
+    </div>
+    `
+);
+$('#dropdownMenu').dropdown();
+

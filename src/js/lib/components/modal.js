@@ -1,6 +1,6 @@
 import $ from '../core';
 
-$.prototype.modal = function() {
+$.prototype.modal = function(created) {
     for (let i = 0; i < this.length; i++) {
        const target = $(this[i]).getAttr('data-target');
 
@@ -10,24 +10,34 @@ $.prototype.modal = function() {
             document.body.style.overflow = 'hidden';
             document.body.style.marginRight = `${calcScroll()}px`;
        });
+
+       const closeElement = document.querySelectorAll(`${target} [data-close]`);
+       closeElement.forEach(elem => {
+           $(elem).click(() => {
+               $(target).fadeOut(500);
+               document.body.style.overflow = '';
+               document.body.style.marginRight = 0;
+               if (created) {
+                    setTimeout(() => {
+                        document.querySelector(target).remove();
+                    }, 500);
+               }
+           });
+       });
+   
+       $(target).click((e) => {
+           if (e.target.classList.contains('modal')) {
+               $(target).fadeOut(500);
+               document.body.style.overflow = '';
+               document.body.style.marginRight = 0;
+               if (created) {
+                    setTimeout(() => {
+                        document.querySelector(target).remove();
+                    }, 500);
+                }
+            }
+       });
     }
-
-    const closeElement = document.querySelectorAll('[data-close]');
-    closeElement.forEach(elem => {
-        $(elem).click(() => {
-            $('.modal').fadeOut(500);
-            document.body.style.overflow = '';
-            document.body.style.marginRight = 0;
-        });
-    });
-
-    $('.modal').click((e) => {
-        if (e.target.classList.contains('modal')) {
-            $('.modal').fadeOut(500);
-            document.body.style.overflow = '';
-            document.body.style.marginRight = 0;
-        }
-    });
 };
 
 const calcScroll = () => {
@@ -46,3 +56,57 @@ const calcScroll = () => {
 };
 
 $("[data-toggle='modal']").modal();
+
+//динамическое создание модалки
+$.prototype.createModal = function({text, btns} = {}) {
+    for (let i = 0; i < this.length; i++) {
+        let modal = document.createElement('div');
+        modal.classList.add('modal');
+        modal.setAttribute('id', this[i].getAttribute('data-target').slice(1));
+
+        //btns = {count: num, settings:[[textBtn, classNames=[], close, callback]]};
+        const buttons = [];
+        for (let j = 0; j < btns.count; j++) {
+            let btn = document.createElement('button');
+            let [textBtn, classNames, close, callback] = btns.settings[j];
+            btn.classList.add('btn', ...classNames);
+            btn.textContent = textBtn;
+            if (close) {
+                btn.setAttribute('data-close', 'true');
+            }
+            if (callback && typeof callback === 'function') {
+                btn.addEventListener('click', callback);
+            }
+            buttons.push(btn);
+        }
+
+        modal.innerHTML = `
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button class="close" data-close>
+                    <span>&times;</span>
+                </button>
+                <div class="modal-header">
+                    <div class="modal-title">
+                        ${text.title}
+                    </div>
+                </div>
+                <div class="modal-body">
+                    ${text.body}
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+        `;
+
+        modal.querySelector('.modal-footer').append(...buttons);
+        document.body.append(modal);
+        $(this[i]).modal(true);
+        $(this[i].getAttribute('data-target')).fadeIn(700);
+    }
+};
+
+// $.prototype.modal = function(created) - created - аргумент, указывающий 
+//создано программо или в вёрстке, для дальнейшего удаления элемента

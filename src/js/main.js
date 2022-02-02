@@ -49,6 +49,7 @@ function sayHello() {
 // $('button').fadeIn(2000);
 // $('button').fadeOut(2000);
 
+//classes
 $('#first').click(() => {
     $('div .w-500').eq(0).fadeToggle(1000);
 });
@@ -75,4 +76,39 @@ $('.wrap').html(
     `
 );
 $('#dropdownMenu').dropdown();
+//btns = {count: num, settings:[[textBtn, classNames=[], close, callback]]};
+//dynamic modal window
+$('#trigger').click(() => $('#trigger').createModal({
+    text: {
+        title: 'Modal title #3',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem nihil a velit esse iste repellendus accusantium quo numquam maiores accusamus praesentium quas non, ipsa ab dignissimos harum odit! Fuga, adipisci.',
+    },
+    btns: {
+        count: 3,
+        settings: [
+            [
+                'Close',
+                ['btn-danger', 'mr-10'],
+                true
+            ],
+            [
+                'Save changes',
+                ['btn-success'],
+                false,
+                () => {
+                    alert('Данные сохранены');
+                }
+            ],
+            [
+                'Another btn',
+                ['btn-warning', 'ml-10'],
+                false,
+                () => {
+                    alert('Предупреждение');
+                }
+            ]
+
+        ]
+    }
+}));
 

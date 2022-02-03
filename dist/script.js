@@ -121,6 +121,112 @@ Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])('.accordion-head').accordi
 
 /***/ }),
 
+/***/ "./src/js/lib/components/carousel.js":
+/*!*******************************************!*\
+  !*** ./src/js/lib/components/carousel.js ***!
+  \*******************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
+
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.carousel = function () {
+  let autoplay = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+  for (let i = 0; i < this.length; i++) {
+    const width = window.getComputedStyle(this[i].querySelector('.carousel-inner')).width;
+    const slides = this[i].querySelectorAll('.carousel-item');
+    const slidesField = this[i].querySelector('.carousel-slides');
+    const dots = this[i].querySelectorAll('.carousel-indicators li');
+    let paused;
+    slidesField.style.width = 100 * slides.length + '%';
+    slides.forEach(slide => {
+      slide.style.width = width;
+    });
+    let offset = 0;
+    let slideIndex = 0;
+    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i].querySelector('[data-slide="next"]')).click(e => {
+      e.preventDefault();
+
+      if (offset == +width.replace(/\D/g, '') * (slides.length - 1)) {
+        offset = 0;
+      } else {
+        offset += +width.replace(/\D/g, '');
+      }
+
+      slidesField.style.transform = `translateX(-${offset}px)`;
+
+      if (slideIndex === slides.length - 1) {
+        slideIndex = 0;
+      } else {
+        slideIndex++;
+      }
+
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[slideIndex].classList.add('active');
+    });
+    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i].querySelector('[data-slide="prev"]')).click(e => {
+      e.preventDefault();
+
+      if (offset == 0) {
+        offset = +width.replace(/\D/g, '') * (slides.length - 1);
+      } else {
+        offset -= +width.replace(/\D/g, '');
+      }
+
+      slidesField.style.transform = `translateX(-${offset}px)`;
+
+      if (slideIndex == 0) {
+        slideIndex = slides.length - 1;
+      } else {
+        slideIndex--;
+      }
+
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[slideIndex].classList.add('active');
+    }); //нажатие на индикаторы №1
+
+    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])('.carousel .carousel-indicators li').click(e => {
+      const slideTo = e.target.getAttribute('data-slide-to');
+      console.log(slideTo);
+      slideIndex = slideTo - 1;
+      offset = +width.replace(/\D/g, '') * (slideTo - 1);
+      slidesField.style.transform = `translateX(-${offset}px)`;
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[slideIndex].classList.add('active');
+    }); //нажатие на индикаторы №2
+    // dots.forEach(dot => {
+    //     dot.addEventListener('click', (e) => {
+    //         const slideTo = e.target.getAttribute('data-slide-to');
+    //         slideIndex = slideTo - 1;
+    //         offset = (+width.replace(/\D/g, '')) * (slideTo - 1);
+    //         slidesField.style.transform = `translateX(-${offset}px)`;
+    //         dots.forEach(dot => dot.classList.remove('active'));
+    //         dots[slideIndex].classList.add('active');
+    //     });
+    // });
+
+    const activateAutoplay = () => {
+      if (autoplay) {
+        paused = setInterval(() => {
+          document.querySelector('[data-slide="next"]').click();
+        }, autoplay);
+      }
+    };
+
+    activateAutoplay();
+    this[0].addEventListener('mouseenter', () => clearInterval(paused));
+    this[0].addEventListener('mouseleave', () => activateAutoplay());
+  }
+};
+
+Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])('.carousel').carousel(3000);
+
+/***/ }),
+
 /***/ "./src/js/lib/components/dropdown.js":
 /*!*******************************************!*\
   !*** ./src/js/lib/components/dropdown.js ***!
@@ -351,6 +457,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_modal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/modal */ "./src/js/lib/components/modal.js");
 /* harmony import */ var _components_tabs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/tabs */ "./src/js/lib/components/tabs.js");
 /* harmony import */ var _components_accordion__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/accordion */ "./src/js/lib/components/accordion.js");
+/* harmony import */ var _components_carousel__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/carousel */ "./src/js/lib/components/carousel.js");
+
 
 
 
